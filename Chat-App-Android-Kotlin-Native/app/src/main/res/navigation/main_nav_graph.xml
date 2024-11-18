@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.vivek.chatingapp.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.vivek.chatingapp.ui.users.UsersFragment"
+        android:label="users_fragment"
+        tools:layout="@layout/users_fragment" >
+        <action
+            android:id="@+id/action_usersFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:popUpTo="@+id/usersFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <action
+        android:id="@+id/actionChatFragment"
+        app:destination="@id/chatFragment"/>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.vivek.chatingapp.ui.chat.ChatFragment"
+        android:label="chat_fragment"
+        tools:layout="@layout/chat_fragment" >
+        <argument
+            android:name="user"
+            app:argType="com.vivek.chatingapp.model.User" />
+    </fragment>
+</navigation>
